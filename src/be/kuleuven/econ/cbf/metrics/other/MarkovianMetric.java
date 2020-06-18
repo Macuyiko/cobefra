@@ -69,7 +69,10 @@ public abstract class MarkovianMetric extends AbstractSimpleMetric {
 			if (mapping.getActivityInvisible(t.getLabel())) {
 				t.getAttributeMap().put(AttributeMap.LABEL, "tau");
 			} else {
-				t.getAttributeMap().put(AttributeMap.LABEL, mapping.getActivity(t.getLabel()).getName());
+				if (mapping.getActivity(t.getLabel()) == null)
+					t.getAttributeMap().put(AttributeMap.LABEL, "__UNMAPPED__VISIBLE__");
+				else
+					t.getAttributeMap().put(AttributeMap.LABEL, mapping.getActivity(t.getLabel()).getName());
 			}
 		}
 	}
