@@ -18,7 +18,6 @@ public class NegativeEventConformanceMetricVisualizer extends WizardVisualizer {
 	
 	@Override
 	protected void buildPanels() {
-		settingsPanel = new WizardSettingsPanel();
 		UISettings.applyUI(settingsPanel, true);
 		
 		panels.add(settingsPanel);

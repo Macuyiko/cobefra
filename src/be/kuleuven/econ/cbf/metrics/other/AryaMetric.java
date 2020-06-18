@@ -25,7 +25,7 @@ import be.kuleuven.econ.cbf.utils.MappingUtils;
 
 public abstract class AryaMetric extends AbstractSimpleMetric {
 	protected Petrinet petrinet = null;
-	protected Marking marking;
+	protected Marking marking = null;
 	protected XLog log = null;
 	protected TransEvClassMapping logMapper = null;
 	protected PluginContext context = null;

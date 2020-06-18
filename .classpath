@@ -43,9 +43,6 @@
 	<classpathentry kind="lib" path="promlib/openide-lookup-1.9-patched-1.0.jar"/>
 	<classpathentry kind="lib" path="promlib/TableLayout-20050920.jar"/>
 	<classpathentry kind="lib" path="promlib/xpp3-1.1.4c.jar"/>
-	<classpathentry kind="lib" path="kulib/behavioralconformance-20120718.jar"/>
-	<classpathentry kind="lib" path="kulib/cutvertices-20120718.jar"/>
-	<classpathentry kind="lib" path="kulib/neconformance-20150526.jar"/>
 	<classpathentry kind="lib" path="packagelib/ApacheUtils.jar"/>
 	<classpathentry kind="lib" path="packagelib/ETConformance.jar"/>
 	<classpathentry kind="lib" path="packagelib/PetriNets.jar"/>
@@ -81,13 +78,8 @@
 	<classpathentry kind="lib" path="promlib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="promlib/slickerbox-1.0rc1.jar"/>
 	<classpathentry kind="lib" path="promlib/Spex-1.1.jar"/>
-	<classpathentry kind="lib" path="promlib/Uitopia-0.5-20160527.jar"/>
 	<classpathentry kind="lib" path="promlib/UITopiaResources-0.5.jar"/>
 	<classpathentry kind="lib" path="promlib/xstream-1.4.9.jar"/>
-	<classpathentry kind="lib" path="promdist/ProM-Contexts.jar"/>
-	<classpathentry kind="lib" path="promdist/ProM-Framework.jar"/>
-	<classpathentry kind="lib" path="promdist/ProM-Models.jar"/>
-	<classpathentry kind="lib" path="promdist/ProM-Plugins.jar"/>
 	<classpathentry kind="lib" path="packagelib/EfficientStorage.jar"/>
 	<classpathentry kind="lib" path="lib/javailp/gurobi-6.5.jar"/>
 	<classpathentry kind="lib" path="packagelib/TransitionSystems.jar"/>
@@ -113,7 +105,23 @@
 	<classpathentry kind="lib" path="lib/xeslib/univocity-parsers-1.5.5.jar"/>
 	<classpathentry kind="lib" path="lib/graphviz/VectorGraphics2D-0.9.1.jar"/>
 	<classpathentry kind="lib" path="packagelib/KitFox.jar"/>
-	<classpathentry kind="lib" path="kulib/kutoolbox-20180726.jar"/>
-	<classpathentry kind="lib" path="kulib/rozinatconformance-20180726.jar"/>
+	<classpathentry kind="lib" path="promdist/ProM-Contexts-6.9.56.jar"/>
+	<classpathentry kind="lib" path="promdist/ProM-Framework-6.9.97.jar"/>
+	<classpathentry kind="lib" path="promdist/ProM-Models-6.9.32.jar"/>
+	<classpathentry kind="lib" path="promdist/ProM-Plugins-6.9.67.jar"/>
+	<classpathentry kind="lib" path="promlib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="promlib/Uitopia-0.6-20181030.jar"/>
+	<classpathentry kind="lib" path="kulib/behavioralconformance.jar"/>
+	<classpathentry kind="lib" path="kulib/cutvertices.jar"/>
+	<classpathentry kind="lib" path="kulib/kutoolbox.jar"/>
+	<classpathentry kind="lib" path="kulib/neconformance.jar"/>
+	<classpathentry kind="lib" path="kulib/rozinatconformance.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/markovian-accuracy.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/bpstruct-0.1.117.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/bpstruct-osgi-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/eclipse-collections-9.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/eclipse-collections-api-8.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/fake-context-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/markovianaccuracy/Sat4j.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

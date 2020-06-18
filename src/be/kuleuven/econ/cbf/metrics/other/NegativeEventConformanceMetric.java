@@ -18,6 +18,7 @@ public abstract class NegativeEventConformanceMetric extends AbstractSimpleMetri
 	protected Petrinet petrinet = null;
 	protected XLog log = null;
 	protected PetrinetLogMapper logMapper = null;
+	protected Marking initialMarking = null;
 	
 	protected int replayer;
 	protected int inducer;
@@ -30,7 +31,6 @@ public abstract class NegativeEventConformanceMetric extends AbstractSimpleMetri
 	protected boolean unmappedRecall;
 	protected boolean unmappedPrecision;
 	protected boolean unmappedGeneralization;
-	private Marking initialMarking;
 	
 	public NegativeEventConformanceMetric() {
 		replayer = 0;

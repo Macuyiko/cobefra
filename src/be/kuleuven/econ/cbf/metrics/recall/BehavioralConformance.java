@@ -10,6 +10,7 @@ import org.processmining.plugins.behavioralconformance.BehavioralConformanceChec
 import org.processmining.plugins.behavioralconformance.MatthiasBehavioralConformanceChecker;
 import org.processmining.plugins.behavioralconformance.SeppeBehavioralConformanceChecker;
 import org.processmining.plugins.kutoolbox.logmappers.PetrinetLogMapper;
+import org.processmining.plugins.kutoolbox.utils.PetrinetUtils;
 
 import be.kuleuven.econ.cbf.input.Mapping;
 import be.kuleuven.econ.cbf.metrics.AbstractSimpleMetric;
@@ -22,11 +23,11 @@ public class BehavioralConformance extends AbstractSimpleMetric {
 	private Petrinet petrinet = null;
 	private XLog log = null;
 	private PetrinetLogMapper logMapper = null;
+	private org.processmining.models.semantics.petrinet.Marking initialMarking = null;
 	
 	private boolean useOriginalImplementation;
 	private int valueToReturn;
 	private ComplianceMetrics complianceMetric;
-	
 	
 	public BehavioralConformance() {
 		useOriginalImplementation = false;
@@ -38,9 +39,9 @@ public class BehavioralConformance extends AbstractSimpleMetric {
 	public synchronized void calculate() {
 		BehavioralConformanceChecker checker;
 		if (useOriginalImplementation)
-			checker = new MatthiasBehavioralConformanceChecker(log, petrinet, logMapper);
+			checker = new MatthiasBehavioralConformanceChecker(log, petrinet, initialMarking, logMapper);
 		else
-			checker = new SeppeBehavioralConformanceChecker(log, petrinet, logMapper);
+			checker = new SeppeBehavioralConformanceChecker(log, petrinet, initialMarking, logMapper);
 			
 		double[] metricSummary = checker.getComplianceMetricSummary(complianceMetric);
 		
@@ -58,6 +59,7 @@ public class BehavioralConformance extends AbstractSimpleMetric {
 		log = mapping.getLog();
 		MappingUtils.setInvisiblesInPetrinet(mapping, petrinet);
 		logMapper = MappingUtils.getPetrinetLogMapper(mapping, petrinet, log);
+		initialMarking = PetrinetUtils.getInitialMarking(petrinet);
 	}
 
 	@Override

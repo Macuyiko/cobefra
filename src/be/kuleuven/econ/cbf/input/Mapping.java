@@ -586,18 +586,18 @@ public class Mapping {
 	}
 	
 	public Object[] getPetrinetWithMarking() {
-		Object[] net = null;
+		Object[] netmarking = null;
 		boolean ok = PetrinetTool.isPetrinetFile(getPetrinetPath());
 		if (ok)
 			try {
-				net = PetrinetTool.openPNML(getPetrinetPath());
+				netmarking = PetrinetTool.openPNML(getPetrinetPath());
 			} catch (Exception e) {
 				e.printStackTrace();
 				ok = false;
 			}
 		if (!ok)
 			throw new IllegalArgumentException("Illegal netfile specified: "+getPetrinetPath());
-		return net;
+		return netmarking;
 	}
 
 	/**

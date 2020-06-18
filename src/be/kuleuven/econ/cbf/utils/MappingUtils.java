@@ -34,14 +34,14 @@ public class MappingUtils {
 	
 	private static XEventClassifier defaultClassifier = XLogInfoImpl.STANDARD_CLASSIFIER;
 	
-	public static XEventClass activityToEventClass(Activity act) {
-		return new XEventClass(act.getName() + "+" + act.getType(), 0);
-	}
-	
 	public static void setInvisiblesInPetrinet(Mapping mapping, Petrinet targetNet) {
 		for (Transition t : targetNet.getTransitions()) {
 			t.setInvisible(mapping.getActivityInvisible(t.getLabel()));
 		}
+	}
+	
+	public static XEventClass activityToEventClass(Activity act) {
+		return new XEventClass(act.getName() + "+" + act.getType(), 0);
 	}
 	
 	public static List<Activity> addUnmappedInPetrinet(Mapping mapping, Petrinet targetNet) {
