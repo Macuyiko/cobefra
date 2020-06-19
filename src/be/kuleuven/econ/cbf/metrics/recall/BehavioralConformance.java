@@ -55,7 +55,7 @@ public class BehavioralConformance extends AbstractSimpleMetric {
 
 	@Override
 	public synchronized void load(Mapping mapping) {
-		Object[] netandmarking = mapping.getPetrinetWithMarking()();
+		Object[] netandmarking = mapping.getPetrinetWithMarking();
 		petrinet = (Petrinet) netandmarking[0];
 		log = mapping.getLog();
 		MappingUtils.setInvisiblesInPetrinet(mapping, petrinet);
