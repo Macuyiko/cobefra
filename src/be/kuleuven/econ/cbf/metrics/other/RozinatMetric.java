@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import org.deckfour.xes.model.XLog;
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
+import org.processmining.models.semantics.petrinet.Marking;
 import org.processmining.plugins.kutoolbox.logmappers.PetrinetLogMapper;
 import org.processmining.plugins.kutoolbox.utils.FakePluginContext;
 import org.processmining.plugins.kutoolbox.utils.PetrinetUtils;
@@ -22,9 +23,10 @@ import be.kuleuven.econ.cbf.utils.MappingUtils;
 
 public abstract class RozinatMetric extends AbstractSimpleMetric {
 
-	protected XLog log;
-	protected Petrinet net;
-	protected PetrinetLogMapper mapper;
+	protected XLog log = null;
+	protected Petrinet net = null;
+	protected Marking initialMarking = null;
+	protected PetrinetLogMapper mapper = null;
 	
 	protected boolean findBestShortestSequence;
 	protected boolean punishUnmapped;
@@ -54,8 +56,9 @@ public abstract class RozinatMetric extends AbstractSimpleMetric {
 		settings.timeoutStateSpaceExploration = this.timeoutStateSpaceExploration;
 		this.setMetric();
 		
-		RozinatJComponent result = (RozinatJComponent) VisualPetrinetEvaluatorPlugin.main(new FakePluginContext(), 
-				log, net, PetrinetUtils.getInitialMarking(net), mapper, settings);
+		RozinatJComponent result = (RozinatJComponent) VisualPetrinetEvaluatorPlugin.main(
+				new FakePluginContext(), 
+				log, net, initialMarking, mapper, settings);
 		ConformanceAnalysisResults insideResult = (ConformanceAnalysisResults) result.getInside();
 		this.obtainResult(insideResult);
 	}
@@ -78,9 +81,21 @@ public abstract class RozinatMetric extends AbstractSimpleMetric {
 
 	@Override
 	public synchronized void load(Mapping mapping) {
-		net = mapping.getPetrinet();
+		Object[] netandmarking = mapping.getPetrinetWithMarking();
+		net = (Petrinet) netandmarking[0];
 		log = mapping.getLog();
 		MappingUtils.setInvisiblesInPetrinet(mapping, net);
+		initialMarking = (Marking) netandmarking[1];
+		if (initialMarking == null || initialMarking.isEmpty()) {
+			System.err.println("The initial marking in the net was empty -- trying to create one.");
+			initialMarking = PetrinetUtils.getInitialMarking(net);
+		}
+		if (initialMarking != null && initialMarking.isEmpty())
+			System.err.println("An initial marking was constructed for the given Petri net, but its marking was empty. "
+					+ "Unreliable results might follow. If you want to avoid this, add tokens using a Petri net "
+					+ "editing tool.");
+		if (initialMarking == null)
+			System.err.println("No initial marking could be obtained.");
 		List<Activity> acts = new ArrayList<Activity>();
 		if (punishUnmapped)
 			acts = MappingUtils.addUnmappedInPetrinet(mapping, net);

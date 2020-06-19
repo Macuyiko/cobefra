@@ -42,7 +42,6 @@ import javax.swing.WindowConstants;
 
 import be.kuleuven.econ.cbf.input.Mapping;
 import be.kuleuven.econ.cbf.input.Mapping.Activity;
-import de.orbitalcomputer.jcombobox.AutoCompletion;
 
 public abstract class MappingFrame {
 

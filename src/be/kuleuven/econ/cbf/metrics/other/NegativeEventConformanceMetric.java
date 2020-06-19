@@ -63,11 +63,22 @@ public abstract class NegativeEventConformanceMetric extends AbstractSimpleMetri
 
 	@Override
 	public synchronized void load(Mapping mapping) {
-		petrinet = mapping.getPetrinet();
+		Object[] netandmarking = mapping.getPetrinetWithMarking();
+		petrinet = (Petrinet) netandmarking[0];
 		log = mapping.getLog();
 		MappingUtils.setInvisiblesInPetrinet(mapping, petrinet);
 		logMapper = MappingUtils.getPetrinetLogMapper(mapping, petrinet, log);
-		initialMarking = PetrinetUtils.getInitialMarking(petrinet);
+		initialMarking = (Marking) netandmarking[1];
+		if (initialMarking == null || initialMarking.isEmpty()) {
+			System.err.println("The initial marking in the net was empty -- trying to create one.");
+			initialMarking = PetrinetUtils.getInitialMarking(petrinet);
+		}
+		if (initialMarking != null && initialMarking.isEmpty())
+			System.err.println("An initial marking was constructed for the given Petri net, but its marking was empty. "
+					+ "Unreliable results might follow. If you want to avoid this, add tokens using a Petri net "
+					+ "editing tool.");
+		if (initialMarking == null)
+			System.err.println("No initial marking could be obtained.");
 	}
 
 	@Override

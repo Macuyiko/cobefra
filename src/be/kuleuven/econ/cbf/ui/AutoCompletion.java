@@ -1,4 +1,4 @@
-package de.orbitalcomputer.jcombobox;
+package be.kuleuven.econ.cbf.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +30,7 @@ import javax.swing.text.PlainDocument;
  * http://www.orbital-computer.de/JComboBox/ and slightly modified by Niels
  * Lambrigts.
  */
+
 public class AutoCompletion extends PlainDocument {
 	JComboBox<?> comboBox;
 	ComboBoxModel<?> model;
